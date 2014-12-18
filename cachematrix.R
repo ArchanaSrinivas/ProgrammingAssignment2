@@ -1,4 +1,5 @@
-## Function: makeCacheMatrix
+## This file contains the following functions 
+##Function: makeCacheMatrix
   ## Capability: Takes in a matrix as input and and contains functions to:
     ## Set the value of the matrix and its inverse in cached variables (set, setInverse)
     ## Get (Return) the value of the matrix and its inverse from cached variables (set, setInverse)
@@ -8,7 +9,9 @@
   ## else calculates the inverse value and returns that
 
 
-## makeCacheMatix takes an matrix as input and caches its value and contains functions to cache and return its inverse
+#-------------------------------------------------------------------------------------------------------------------------------------------
+
+## makeCacheMatix takes an matrix as input and contains functions to cache and return its inverse, and set a new value for the matrix
 makeCacheMatrix<- function(x = matrix()) {
   
   ##Initializing inv to NULL for a new matrix call
@@ -41,6 +44,7 @@ makeCacheMatrix<- function(x = matrix()) {
        getInverse = getInverse)
 }
 
+#-------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Returns the cached value of the inverse if existing, else calculates and returns the inverse of the matrix 
 cacheSolve <- function(x, ...) {
@@ -70,3 +74,5 @@ cacheSolve <- function(x, ...) {
   ##print the inverse value out
   inv
 }
+
+#-------------------------------------------------------------------------------------------------------------------------------------------
