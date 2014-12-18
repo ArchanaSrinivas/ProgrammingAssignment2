@@ -9,7 +9,7 @@
 
 
 ## makeCacheMatix takes an matrix as input and caches its value and contains functions to cache and return its inverse
-makeCacheMatrix<- function(mat = matrix()) {
+makeCacheMatrix<- function(x = matrix()) {
   
   ##Initializing inv to NULL for a new matrix call
   inv <- NULL
@@ -18,13 +18,13 @@ makeCacheMatrix<- function(mat = matrix()) {
   ##Capability: Allows ability to reset the value of the matrix variable without calling the makeCacheMatrix function again
   # Additionally, reinitializes the value of the inverse to NULL
   set <- function(newmat) {
-    mat <<- newmat
+    x <<- newmat
     inv <<- NULL
   }
   
   ##Function: Set
   ##Capability: Returns the current matrix stored in the variable
-  get <- function() mat
+  get <- function() x
   
   ##Function: setInverse
   ##Capability: Caches the value of the inverse into the cached variable inv  
@@ -43,11 +43,12 @@ makeCacheMatrix<- function(mat = matrix()) {
 
 
 ## Returns the cached value of the inverse if existing, else calculates and returns the inverse of the matrix 
-cacheSolve <- function(mat, ...) {
-  #Input: mat is a matrix created using the makeCacheMatrix function
+cacheSolve <- function(x, ...) {
+  #Input: x is a matrix created using the makeCacheMatrix function
   
-  #Obtain the current inverse value of the matrix passed stored in the cached variable
-  inv <- mat$getInverse()
+  #Obtain the current inverse value of the matrix passed 
+  #stored in the cached variable
+  inv <- x$getInverse()
   
   ##If the value returned is not NULL - then return the current cached inverse matrix
   if(!is.null(inv)) {
@@ -55,16 +56,16 @@ cacheSolve <- function(mat, ...) {
     return(inv)
   }
   
-  ##This part of the function is only accessed when  there is no cached inverse value for the matrix passed
+  ##This part of the function is only accessed when there is no cached inverse value for the matrix passed
   
   ##Get the value of the current matrix
-  data <- mat$get()
+  data <- x$get()
   
   ##Solve to get the Inverse
   inv <- solve(data, ...)
   
   ##Store the inverse value in the cache
-  mat$setInverse(inv)
+  x$setInverse(inv)
   
   ##print the inverse value out
   inv
